@@ -1,0 +1,61 @@
+import { useState } from 'react';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+import PackageCard from './PackageCard';
+import { Link } from 'react-router-dom';
+import TourGuidesCards from './TourGuides/TourGuidesCards';
+import Heading from '../Shared/Heading/Heading';
+
+const CatTab = () => {
+    const [activeTab, setActiveTab] = useState(0);
+
+    const handleTabSelect = index => {
+        setActiveTab(index);
+    }
+
+    return (
+        <div className='mt-20'>
+            <Heading
+                heading={'Your Ultimate Travel Guide'} subHeading={'Discover our mission and why we`re your best choice for unforgettable travel.'}
+            ></Heading>
+            <Tabs selectedIndex={activeTab} onSelect={handleTabSelect}>
+                <div className='flex justify-center items-center font-semibold'>
+                    <TabList>
+                        <Tab>Overview</Tab>
+                        <Tab>Packages</Tab>
+                        <Tab>Meet Tour Guides</Tab>
+                    </TabList>
+                </div>
+
+                <TabPanel>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-5 p-2'>
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                </TabPanel>
+                <TabPanel>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-5 p-2'>
+                        <PackageCard></PackageCard>
+                    </div>
+                    <div className='flex justify-center text-lg md:text-2xl font-bold mt-10'>
+                        <h3>Tour Packages - <Link to="/all-packages" className='text-green-400 hover:text-green-500'>View All</Link></h3>
+                    </div>
+                </TabPanel>
+                <TabPanel>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-5 p-2'>
+                        <TourGuidesCards></TourGuidesCards>
+                    </div>
+                </TabPanel>
+            </Tabs>
+        </div>
+    );
+};
+
+export default CatTab;
