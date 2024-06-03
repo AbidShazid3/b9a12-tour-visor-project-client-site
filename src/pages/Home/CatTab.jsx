@@ -3,11 +3,11 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import PackageCard from './PackageCard';
 import { Link } from 'react-router-dom';
-import TourGuidesCards from './TourGuides/TourGuidesCards';
 import Heading from '../Shared/Heading/Heading';
 import video1 from '/ranga.mp4';
 import video2 from '/cox.mp4';
 import video3 from '/martin.mp4';
+import TourGuideList from './TourGuides/TourGuideList';
 
 
 const CatTab = () => {
@@ -32,25 +32,25 @@ const CatTab = () => {
                 </div>
 
                 <TabPanel>
+                    <div className='mt-5'>
+                    </div>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-5 p-2'>
                         <div>
                             <video width="560" height="315" controls>
                                 <source src={video1} type="video/mp4" />
-                                Your browser does not support the video tag.
                             </video>
                         </div>
-                        <video width="560" height="315" controls>
-                            <source src={video2} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
+
                         <div>
                             <video width="560" height="315" controls>
                                 <source src={video3} type="video/mp4" />
-                                Your browser does not support the video tag.
                             </video>
                         </div>
-                        <div>
 
+                        <div>
+                            <video width="560" height="315" controls>
+                                <source src={video2} type="video/mp4" />
+                            </video>
                         </div>
                     </div>
                 </TabPanel>
@@ -63,8 +63,8 @@ const CatTab = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-5 p-2'>
-                        <TourGuidesCards></TourGuidesCards>
+                    <div className='mt-5 p-2'>
+                        <TourGuideList></TourGuideList>
                     </div>
                 </TabPanel>
             </Tabs>
