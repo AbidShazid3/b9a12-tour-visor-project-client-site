@@ -12,6 +12,7 @@ import PackageDetailsCard from "../pages/Home/PackageDetailsCard";
 import AllPackages from "../pages/AllPackages/AllPackages";
 import TourGuideDetailsCard from "../pages/Home/TourGuides/TourGuideDetailsCard";
 import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
 
 
 export const router = createBrowserRouter([
@@ -55,5 +56,5 @@ export const router = createBrowserRouter([
         ]
     },
     { path: '/login', element: <Login></Login>},
-    // { path: '/signup', element: <SignUp /> },
+    { path: '/register', element: <Register></Register> },
 ]);

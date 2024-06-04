@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 
 const Login = () => {
     const [showPass, setShowPass] = useState(false);
-    const { user, loginUser } = useAuth();
+    const { user, loginUser, googleLogin } = useAuth();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
     console.log(location.state);
@@ -32,7 +32,19 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch(error => {
-                console.log(error.message);
+                toast.error(error.message);
+            })
+    }
+
+    const handleGoogleLogIn = () => {
+        googleLogin()
+            .then(result => {
+                const googleLoggedUser = result.user;
+                console.log(googleLoggedUser);
+                toast.success('Login successful!');
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
                 toast.error(error.message);
             })
     }
@@ -106,13 +118,13 @@ const Login = () => {
             </div>
 
             <div className="flex items-center mt-6 -mx-2">
-                <button type="button" className="flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:bg-blue-400 focus:outline-none">
+                <button onClick={handleGoogleLogIn} type="button" className="flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:bg-blue-400 focus:outline-none">
                     <FaGoogle />
                     <span className="hidden mx-2 sm:inline">Sign in with Google</span>
                 </button>
             </div>
 
-            <p className="mt-8 text-lg font-medium text-center text-gray-400"> Don`t have an account? <Link className="font-medium text-gray-700 dark:text-gray-200 hover:underline">Create One</Link></p>
+            <p className="mt-8 text-lg font-medium text-center text-gray-400"> Don`t have an account? <Link to='/register' className="font-medium text-gray-700 dark:text-gray-200 hover:underline">Create One</Link></p>
         </div>
     );
 };
