@@ -13,7 +13,7 @@ import slider5 from '../../assets/images/slider/masudur-rahman-3VIASEA4xZ0-unspl
 
 const Slider = () => {
     return (
-        <div className='mt-5'>
+        <div className='mt-2'>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
