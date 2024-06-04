@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 import PropTypes from 'prop-types';
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import axios from "axios";
 
 
 export const AuthContext = createContext();
@@ -47,6 +48,20 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
+    // save user
+  const saveUser = async user => {
+    const currentUser = {
+      email: user?.email,
+      role: 'tourist',
+      status: 'Verified',
+    }
+    const { data } = await axios.put(
+      `${import.meta.env.VITE_API_URL}/user`,
+      currentUser
+    )
+    return data
+  }
+
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             console.log('current user in auth state', currentUser);
@@ -58,6 +73,7 @@ const AuthProvider = ({ children }) => {
                     .then(res => {
                         if (res.data.token) {
                             localStorage.setItem('access-token', res.data.token);
+                            saveUser(currentUser);
                             setLoading(false);
                         }
                     })

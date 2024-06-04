@@ -22,7 +22,6 @@ const Login = () => {
     } = useForm()
 
     const onSubmit = (data) => {
-        console.log(data)
         loginUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
