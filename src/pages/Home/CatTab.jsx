@@ -8,14 +8,27 @@ import video1 from '/ranga.mp4';
 import video2 from '/cox.mp4';
 import video3 from '/martin.mp4';
 import TourGuideList from './TourGuides/TourGuideList';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 
 const CatTab = () => {
     const [activeTab, setActiveTab] = useState(0);
+    const axiosPublic = useAxiosPublic();
 
     const handleTabSelect = index => {
         setActiveTab(index);
     }
+
+    const { data: packages = [] } = useQuery({
+        queryKey: ['packages'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/packages')
+            return res.data;
+        }
+    })
+
+    const shortPackages = packages.slice(0, 3)
 
     return (
         <div className='mt-20'>
@@ -56,7 +69,9 @@ const CatTab = () => {
                 </TabPanel>
                 <TabPanel>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-5 p-2'>
-                        <PackageCard></PackageCard>
+                        {
+                            shortPackages.map(pack => <PackageCard key={pack._id} pack={pack}></PackageCard>)
+                        }
                     </div>
                     <div className='flex justify-center text-lg md:text-2xl font-bold mt-10'>
                         <h3>Tour Packages - <Link to="/all-packages" className='text-green-400 hover:text-green-500'>View All</Link></h3>
