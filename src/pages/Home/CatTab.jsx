@@ -8,25 +8,16 @@ import video1 from '/ranga.mp4';
 import video2 from '/cox.mp4';
 import video3 from '/martin.mp4';
 import TourGuideList from './TourGuides/TourGuideList';
-import { useQuery } from '@tanstack/react-query';
-import useAxiosPublic from '../../hooks/useAxiosPublic';
+import usePackages from '../../hooks/usePackages';
 
 
 const CatTab = () => {
     const [activeTab, setActiveTab] = useState(0);
-    const axiosPublic = useAxiosPublic();
+    const [packages] = usePackages();
 
     const handleTabSelect = index => {
         setActiveTab(index);
     }
-
-    const { data: packages = [] } = useQuery({
-        queryKey: ['packages'],
-        queryFn: async () => {
-            const res = await axiosPublic.get('/packages')
-            return res.data;
-        }
-    })
 
     const shortPackages = packages.slice(0, 3)
 
