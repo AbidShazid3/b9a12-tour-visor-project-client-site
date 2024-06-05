@@ -13,6 +13,7 @@ import AllPackages from "../pages/AllPackages/AllPackages";
 import TourGuideDetailsCard from "../pages/Home/TourGuides/TourGuideDetailsCard";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import TourGuides from "../pages/Home/TourGuides/TourGuides";
 
 
 export const router = createBrowserRouter([
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
             {
                 path: '/tour-guide-details',
                 element: <TourGuideDetailsCard></TourGuideDetailsCard>
+            },
+            {
+                path: '/tour-guides',
+                element: <TourGuides></TourGuides>
             },
         ]
     },

@@ -7,13 +7,15 @@ import Heading from '../Shared/Heading/Heading';
 import video1 from '/ranga.mp4';
 import video2 from '/cox.mp4';
 import video3 from '/martin.mp4';
-import TourGuideList from './TourGuides/TourGuideList';
 import usePackages from '../../hooks/usePackages';
+import TourGuidesCards from './TourGuides/TourGuidesCards';
+import useGuides from '../../hooks/useGuides';
 
 
 const CatTab = () => {
     const [activeTab, setActiveTab] = useState(0);
     const [packages] = usePackages();
+    const [guides] = useGuides();
 
     const handleTabSelect = index => {
         setActiveTab(index);
@@ -69,8 +71,14 @@ const CatTab = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className='mt-5 p-2'>
-                        <TourGuideList></TourGuideList>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-5 p-2'>
+                        {
+                            guides.map(guide => <TourGuidesCards key={guide._id} guide={guide}
+                            ></TourGuidesCards>)
+                        }
+                    </div>
+                    <div className='flex justify-center text-lg md:text-2xl font-bold mt-10'>
+                        <h3>Tour Guides - <Link to='/tour-guides' className='text-green-400 hover:text-green-500'>View All</Link></h3>
                     </div>
                 </TabPanel>
             </Tabs>
