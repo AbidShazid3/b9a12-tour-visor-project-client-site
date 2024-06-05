@@ -52,8 +52,9 @@ export const router = createBrowserRouter([
                 element: <AllPackages></AllPackages>
             },
             {
-                path: '/tour-guide-details',
-                element: <TourGuideDetailsCard></TourGuideDetailsCard>
+                path: '/tour-guide-details/:id',
+                element: <TourGuideDetailsCard></TourGuideDetailsCard>,
+                loader: ({params}) => fetch(`http://localhost:5000/guides/${params.id}`)
             },
             {
                 path: '/tour-guides',

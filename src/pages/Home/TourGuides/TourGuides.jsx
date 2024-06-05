@@ -1,10 +1,13 @@
+import { FaArrowLeft } from "react-icons/fa";
 import useGuides from "../../../hooks/useGuides";
 import Heading from "../../Shared/Heading/Heading";
 import TourGuidesCards from "./TourGuidesCards";
+import { useNavigate } from "react-router-dom";
 
 
 const TourGuides = () => {
     const [guides] = useGuides();
+    const navigate = useNavigate();
 
     return (
         <div className="mt-10">
@@ -16,6 +19,9 @@ const TourGuides = () => {
                     guides.map(guide => <TourGuidesCards key={guide._id} guide={guide}
                     ></TourGuidesCards>)
                 }
+            </div>
+            <div className="flex justify-center mt-10">
+                <button onClick={() => navigate(-1)} className="text-lg md:text-2xl font-bold p-2 hover:bg-gray-100 rounded-lg flex items-center gap-2 text-red-500"><FaArrowLeft /> Go Back</button>
             </div>
         </div>
     );
