@@ -2,14 +2,46 @@ import { FaRegHeart } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
 import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const PackageCard = ({ pack }) => {
     const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
     const location = useLocation();
 
     const handleAddToCart = (pack) => {
         console.log(pack);
+        if (user && user?.email) {
+            const wishlistPackage = {
+                email: user.email,
+                addedUser: user.displayName,
+                ...pack,
+            }
+            axiosSecure.post('/wishlists', wishlistPackage)
+                .then(res => {
+                    if (res.data.insertedId) {
+                    toast.success(`${pack.tripTitle} added to your wishlist`)
+                }
+            })
+        }
+        else {
+            Swal.fire({
+                title: "Are you not logged in",
+                text: "Pls login first to add!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, log in!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate("/login", { state: { from: location } });
+                }
+            });
+        }
     }
 
     return (
