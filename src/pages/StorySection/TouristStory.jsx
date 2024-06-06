@@ -12,7 +12,7 @@ const TouristStory = () => {
 
     return (
         <div className="mt-20">
-            <Heading heading={'Tourist Story'} subHeading={'Welcome to our Tourist story section. Discover the stories'}></Heading>
+            <Heading heading={'Tourist Story'} subHeading={'Welcome to our Tourist story section. Discover the stories of our happy customers'}></Heading>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-2'>
                 {
                     shortStories.map(story => <StoryCartDetails key={story._id} story={story}></StoryCartDetails>)

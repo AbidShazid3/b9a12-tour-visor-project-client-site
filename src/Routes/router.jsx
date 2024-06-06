@@ -68,7 +68,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/story/:id',
-                element: <SingleStoryDetails></SingleStoryDetails>
+                element: <SingleStoryDetails></SingleStoryDetails>,
+                loader: ({params}) => fetch(`http://localhost:5000/stories/${params.id}`)
             },
         ]
     },
