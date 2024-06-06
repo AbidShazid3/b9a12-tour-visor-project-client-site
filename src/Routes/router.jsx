@@ -14,6 +14,8 @@ import TourGuideDetailsCard from "../pages/Home/TourGuides/TourGuideDetailsCard"
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import TourGuides from "../pages/Home/TourGuides/TourGuides";
+import AllStories from "../pages/StorySection/AllStories";
+import SingleStoryDetails from "../pages/StorySection/SingleStoryDetails";
 
 
 export const router = createBrowserRouter([
@@ -59,6 +61,14 @@ export const router = createBrowserRouter([
             {
                 path: '/tour-guides',
                 element: <TourGuides></TourGuides>
+            },
+            {
+                path: '/all-stories',
+                element: <AllStories></AllStories>
+            },
+            {
+                path: '/story/:id',
+                element: <SingleStoryDetails></SingleStoryDetails>
             },
         ]
     },

@@ -1,3 +1,4 @@
+import TouristStory from "../StorySection/TouristStory";
 import CatTab from "./CatTab";
 import Slider from "./Slider";
 import TourTypes from "./TourTypes/TourTypes";
@@ -9,6 +10,7 @@ const Home = () => {
             <Slider></Slider>
             <CatTab></CatTab>
             <TourTypes></TourTypes>
+            <TouristStory></TouristStory>
         </div>
     );
 };
