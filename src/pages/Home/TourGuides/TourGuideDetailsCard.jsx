@@ -2,12 +2,28 @@ import ImageHeader from "../../Shared/ImageHeader/ImageHeader";
 import img4 from '../../../assets/images/8511.jpg'
 import { FaArrowLeft } from "react-icons/fa";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { Rating } from 'react-simple-star-rating'
+import { useState } from "react";
 
 const TourGuideDetailsCard = () => {
     const guideDetails = useLoaderData();
     const { name, profilePicture, contactDetails, education, skills, workExperience } = guideDetails
     const navigate = useNavigate();
-    console.log(guideDetails);
+    const [rating, setRating] = useState(0);
+    console.log(rating)
+
+    // Catch Rating value
+    const handleRating = (rate) => {
+        setRating(rate)
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        const text = e.target.text.value;
+        console.log(text);
+
+    }
+
 
     return (
         <div className="mt-10">
@@ -45,6 +61,26 @@ const TourGuideDetailsCard = () => {
                                 <p className="text-gray-600 dark:text-gray-400">Role : {exp.role} ({exp.years})</p>
                             </div>
                         ))}
+                    </div>
+                    <h3 className=" text-lg mt-5 text-green-500">Give your rating and feedback</h3>
+                    <div>
+                        <form onSubmit={handleSubmit}>
+                            <div className="flex">
+                                <div>
+                                    <Rating onClick={handleRating} initialValue={rating}/>
+                                    <p className="mt-4 text-white font-medium">Rating: {rating}</p>
+                                </div>
+                                <div>
+                                    <label className="form-control">
+                                        <div className="label">
+                                            <span className="label-text text-white">Your Comment</span>
+                                        </div>
+                                        <textarea className="textarea textarea-bordered h-24" name="text" placeholder="Bio"></textarea>
+                                    </label>
+                                    <button className="btn btn-primary mt-5">Submit</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -23,9 +23,12 @@ const PackageCard = ({ pack }) => {
             axiosSecure.post('/wishlists', wishlistPackage)
                 .then(res => {
                     if (res.data.insertedId) {
-                    toast.success(`${pack.tripTitle} added to your wishlist`)
-                }
-            })
+                        toast.success(`${pack.tripTitle} added to your wishlist`)
+                    }
+                })
+                .catch(error => {
+                    toast.error(error.message);
+                })
         }
         else {
             Swal.fire({
@@ -58,7 +61,7 @@ const PackageCard = ({ pack }) => {
 
             <div className="flex items-center justify-between px-4 py-2 bg-gray-900">
                 <h1 className="text-lg font-bold text-white">TK {pack.price}</h1>
-                <button onClick={()=>handleAddToCart(pack)} className="btn-xs text-xl text-white hover:text-2xl"><FaRegHeart /></button>
+                <button onClick={() => handleAddToCart(pack)} className="btn-xs text-xl text-white hover:text-2xl"><FaRegHeart /></button>
             </div>
         </div>
     );
