@@ -1,22 +1,21 @@
 import { useState } from 'react'
 import { GrLogout } from 'react-icons/gr'
 import { AiOutlineBars } from 'react-icons/ai'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import img1 from '../../assets/images/TourVisor.png'
 import useAuth from '../../hooks/useAuth'
 import toast from 'react-hot-toast'
-import { CgAddR } from 'react-icons/cg'
-import { LuUserSquare } from 'react-icons/lu'
-import { RiProfileLine } from 'react-icons/ri'
 import useRole from '../../hooks/useRole'
+import AdminMenu from '../DashBoardBar/AdminMenu'
+import TouristMenu from '../DashBoardBar/TouristMenu'
+import TourGuideDashBoard from '../DashBoardBar/TourGuideDashBoard'
 
 const Sidebar = () => {
     const { logOutUser } = useAuth();
     const [isActive, setActive] = useState(false);
     const navigate = useNavigate();
-    const [role, isLoading] = useRole();
-    console.log(role, isLoading);
+    const [role] = useRole();
 
     const handleSignOutUser = () => {
         logOutUser()
@@ -84,46 +83,11 @@ const Sidebar = () => {
 
                         {/*  Menu Items */}
                         <nav>
+
+                            {role === 'tourist' && <TouristMenu></TouristMenu>}
+                            {role === 'guide' && <TourGuideDashBoard></TourGuideDashBoard>}
+                            {role === 'admin' && <AdminMenu></AdminMenu>}
                             
-                            {/* Profile Menu */}
-                            <NavLink
-                                to='/dashboard'
-                                end
-                                className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                                    }`
-                                }
-                            >
-                                <RiProfileLine className='w-5 h-5' />
-
-                                <span className='mx-4 font-medium'>Profile</span>
-                            </NavLink>
-
-                            {/* Add Room */}
-                            <NavLink
-                                to='/dashboard/add-package'
-                                className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                                    }`
-                                }
-                            >
-                                <CgAddR className='w-5 h-5' />
-
-                                <span className='mx-4 font-medium'>Add Package</span>
-                            </NavLink>
-                            {/* My Listing */}
-                            <NavLink
-                                to='/dashboard/manage-users'
-                                end
-                                className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                                    }`
-                                }
-                            >
-                                <LuUserSquare className='w-5 h-5' />
-
-                                <span className='mx-4 font-medium'>Manage Users</span>
-                            </NavLink>
                         </nav>
                     </div>
                 </div>

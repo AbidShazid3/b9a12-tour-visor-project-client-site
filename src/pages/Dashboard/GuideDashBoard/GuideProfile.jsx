@@ -1,11 +1,13 @@
-import useAuth from '../../../hooks/useAuth';
-import LoadingSpinner from '../../Shared/LoadingSpinner/LoadingSpinner';
+import useAuth from "../../../hooks/useAuth";
+import useRole from "../../../hooks/useRole";
+import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 import img2 from '../../../assets/images/bg2.jpg';
 
-const Profile = () => {
-    const { user, loading } = useAuth();
+const GuideProfile = () => {
+    const { user, loading } = useAuth() || {};
+    const [role, isLoading] = useRole();
 
-    if(loading) return <LoadingSpinner></LoadingSpinner>
+    if(isLoading || loading) return <LoadingSpinner></LoadingSpinner>
 
     return (
         <div className='flex justify-center items-center'>
@@ -24,8 +26,8 @@ const Profile = () => {
                         />
                     </a>
 
-                    <p className='p-2 uppercase px-4 text-xs text-white bg-pink-500 rounded-full'>
-                        {/* {role} */}
+                    <p className='p-2 uppercase px-4 text-sm font-semibold text-white bg-green-600 rounded-full'>
+                        {role}
                     </p>
                     <p className='mt-2 text-xl font-medium text-gray-800 '>
                         Last Login: {user?.metadata?.lastSignInTime}
@@ -59,4 +61,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default GuideProfile;
