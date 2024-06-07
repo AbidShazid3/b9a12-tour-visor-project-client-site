@@ -9,11 +9,14 @@ import toast from 'react-hot-toast'
 import { CgAddR } from 'react-icons/cg'
 import { LuUserSquare } from 'react-icons/lu'
 import { RiProfileLine } from 'react-icons/ri'
+import useRole from '../../hooks/useRole'
 
 const Sidebar = () => {
     const { logOutUser } = useAuth();
     const [isActive, setActive] = useState(false);
     const navigate = useNavigate();
+    const [role, isLoading] = useRole();
+    console.log(role, isLoading);
 
     const handleSignOutUser = () => {
         logOutUser()
