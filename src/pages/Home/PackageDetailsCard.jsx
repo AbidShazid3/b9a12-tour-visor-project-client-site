@@ -14,7 +14,8 @@ import toast from "react-hot-toast";
 const PackageDetailsCard = () => {
     const { user } = useAuth();
     const packageDetails = useLoaderData();
-    const { _id, img, tourType, tripTitle, location, price, aboutTour, tourDuration, tourPlan } = packageDetails
+    const { _id, img, tourType, tripTitle, location, price, aboutTour, tourDuration, tourPlan } = packageDetails;
+    console.log(packageDetails);
     const [guides] = useGuides();
     const navigate = useNavigate();
     const [startDate, setStartDate] = useState(new Date());

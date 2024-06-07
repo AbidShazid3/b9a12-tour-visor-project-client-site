@@ -16,6 +16,10 @@ import Register from "../pages/Register/Register";
 import TourGuides from "../pages/Home/TourGuides/TourGuides";
 import AllStories from "../pages/StorySection/AllStories";
 import SingleStoryDetails from "../pages/StorySection/SingleStoryDetails";
+import DashBoardLayout from "../Layout/DashBoardLayout";
+import Profile from "../pages/Dashboard/Common/Profile";
+import AddPackage from "../pages/Dashboard/AdminDashBoard/AddPackage";
+import ManageUsers from "../pages/Dashboard/AdminDashBoard/ManageUsers";
 
 
 export const router = createBrowserRouter([
@@ -75,4 +79,22 @@ export const router = createBrowserRouter([
     },
     { path: '/login', element: <Login></Login>},
     { path: '/register', element: <Register></Register> },
+    {
+        path: '/dashboard',
+        element: <DashBoardLayout></DashBoardLayout>,
+        children: [
+            {
+                index: true,
+                element: <Profile></Profile>
+            },
+            {
+                path: 'add-package',
+                element: <AddPackage></AddPackage>
+            },
+            {
+                path: 'manage-users',
+                element: <ManageUsers></ManageUsers>
+            },
+        ]
+    }
 ]);
