@@ -1,6 +1,48 @@
 import PropTypes from 'prop-types'
+import useAxiosSecure from '../../../hooks/useAxiosSecure'
+import toast from 'react-hot-toast';
+import { useMutation } from '@tanstack/react-query';
 
 const UserDataRow = ({ user, refetch }) => {
+    const axiosSecure = useAxiosSecure();
+
+    const { mutateAsync } = useMutation({
+        mutationFn: async role => {
+            const { data } = await axiosSecure.patch(`/users/update/${user?.email}`, role);
+            return data;
+        },
+        onSuccess: (data) => {
+            refetch();
+            console.log(data);
+            toast.success('User role updated successfully!')
+        }
+    })
+
+    const handleAdmin = async () => {
+        const userRole = {
+            role: 'admin',
+            status: 'Verified',
+        }
+        try {
+            await mutateAsync(userRole);
+
+        } catch (err) {
+            toast.error(err.message);
+        }
+    }
+
+    const handleTourGuide = async () => {
+        const userRole = {
+            role: 'guide',
+            status: 'Verified',
+        }
+        try {
+            await mutateAsync(userRole);
+
+        } catch (err) {
+            toast.error(err.message);
+        }
+    }
 
     return (
         <tr className="hover">
@@ -10,13 +52,10 @@ const UserDataRow = ({ user, refetch }) => {
                 <p className={`${user.status === 'Verified' ? 'text-green-500' : 'text-yellow-500'} whitespace-no-wrap`}>{user.status}</p>) : (
                 <p className='text-red-500 whitespace-no-wrap'>Unavailable</p>)}</td>
             <td>
-                <button className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'>
-                <span
-                    aria-hidden='true'
-                    className='absolute inset-0 bg-green-200 opacity-50 rounded-full'
-                ></span>
-                <span className='relative'>Update Role</span>
-                </button>
+                <button onClick={handleAdmin} disabled={user?.status === 'Verified'} className='btn btn-sm btn-accent'>Make Admin</button>
+            </td>
+            <td>
+                <button onClick={handleTourGuide} disabled={user?.status === 'Verified'} className='btn btn-sm btn-accent'>Make Tour Guide</button>
             </td>
         </tr>
     )

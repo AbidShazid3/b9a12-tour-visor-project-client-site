@@ -57,15 +57,13 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-
-
-
+                    
                     {
                         user ?
                             <div className="dropdown dropdown-end">
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                                    <div className="w-10 rounded-full">
-                                        <img src={user?.photoURL || "Null"} alt="" className="rounded-full w-8 h-8"
+                                    <div className="w-8">
+                                        <img src={user?.photoURL || "Null"} alt="" className="rounded-full w-6 h-6"
                                         />
                                     </div>
                                 </div>
