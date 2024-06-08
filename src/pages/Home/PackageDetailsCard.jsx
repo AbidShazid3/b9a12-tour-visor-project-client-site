@@ -15,7 +15,6 @@ const PackageDetailsCard = () => {
     const { user } = useAuth();
     const packageDetails = useLoaderData();
     const { _id, img, tourType, tripTitle, location, price, aboutTour, tourDuration, tourPlan } = packageDetails;
-    console.log(packageDetails);
     const [guides] = useGuides();
     const navigate = useNavigate();
     const [startDate, setStartDate] = useState(new Date());
@@ -41,7 +40,6 @@ const PackageDetailsCard = () => {
 
         axiosSecure.post('/bookings', details)
             .then(res => {
-                console.log(res.data);
                 if (res.data.insertedId) {
                     setIsModalOpen(true);
                     setStartDate(new Date());

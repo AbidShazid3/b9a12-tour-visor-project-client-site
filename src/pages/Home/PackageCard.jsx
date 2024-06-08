@@ -13,7 +13,6 @@ const PackageCard = ({ pack }) => {
     const location = useLocation();
 
     const handleAddToCart = (pack) => {
-        console.log(pack);
         if (user && user?.email) {
             const wishlistPackage = {
                 email: user.email,
