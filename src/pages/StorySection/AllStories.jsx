@@ -2,10 +2,14 @@ import useStories from "../../hooks/useStories";
 import ImageHeader from "../Shared/ImageHeader/ImageHeader";
 import img1 from '../../assets/images/slider/1694198836218.jpg'
 import StoryCartDetails from "./StoryCartDetails";
+import { FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 
 const AllStories = () => {
     const [stories] = useStories();
+    const navigate = useNavigate();
+
     return (
         <div className="mt-10">
             <ImageHeader
@@ -15,6 +19,9 @@ const AllStories = () => {
                 {
                     stories.map(story => <StoryCartDetails key={story._id} story={story}></StoryCartDetails>)
                 }
+            </div>
+            <div className="flex justify-center mt-10">
+                <button onClick={() => navigate(-1)} className="text-lg md:text-2xl font-bold p-2 hover:bg-gray-100 rounded-lg flex items-center gap-2 text-red-500"><FaArrowLeft /> Go Back</button>
             </div>
         </div>
     );

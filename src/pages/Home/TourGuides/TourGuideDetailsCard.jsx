@@ -10,7 +10,6 @@ const TourGuideDetailsCard = () => {
     const { name, profilePicture, contactDetails, education, skills, workExperience } = guideDetails
     const navigate = useNavigate();
     const [rating, setRating] = useState(0);
-    console.log(rating)
 
     // Catch Rating value
     const handleRating = (rate) => {
