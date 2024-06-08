@@ -175,7 +175,7 @@ const PackageDetailsCard = () => {
                         <p>{tripTitle} Details Has Been Added.</p>
                         <div className="flex gap-2">
                             <button
-                                onClick={() => navigate('/my-bookings')}
+                                onClick={() => navigate('/dashboard/my-bookings')}
                                 className="mt-4 btn btn-sm btn-secondary"
                             >
                                 Go to My Bookings

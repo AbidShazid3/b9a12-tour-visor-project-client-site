@@ -18,7 +18,10 @@ const PackageCard = ({ pack }) => {
             const wishlistPackage = {
                 email: user.email,
                 addedUser: user.displayName,
-                ...pack,
+                tripTitle: pack.tripTitle,
+                location: pack.location,
+                price: pack.price,
+                packageId: pack._id,
             }
             axiosSecure.post('/wishlists', wishlistPackage)
                 .then(res => {
