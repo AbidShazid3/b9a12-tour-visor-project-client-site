@@ -10,7 +10,7 @@ const Community = () => {
                     <div className="">
                         <div className='flex items-center gap-2'>
                             <h2 className='text-xl font-bold'>Startup Costs:</h2>
-                            <p className="text-xl">$1,000 - $50,000</p>
+                            <p className="text-xl">1,000 - 50,000</p>
                         </div>
                         <div className='flex items-center gap-2'>
                             <h2 className='text-xl font-bold'>Home Based:</h2>

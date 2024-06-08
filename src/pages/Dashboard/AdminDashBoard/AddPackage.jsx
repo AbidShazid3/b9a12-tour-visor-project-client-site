@@ -58,7 +58,7 @@ const AddPackage = () => {
                 tourPlan: [{day: planDays, title: planTitle, 
                     description:  planDis}]
             }
-            console.log(packageData);
+            
             const res = await axiosSecure.post('/package', packageData)
             if (res.data.insertedId) {
                 form.reset();

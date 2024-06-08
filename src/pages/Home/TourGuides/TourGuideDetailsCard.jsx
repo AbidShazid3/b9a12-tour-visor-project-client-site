@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const TourGuideDetailsCard = () => {
     const guideDetails = useLoaderData();
-    const { name, profilePicture, contactDetails, education, skills, workExperience } = guideDetails
+    const { name, profilePicture, email, phone, education, skills, workExperience } = guideDetails
     const navigate = useNavigate();
     const [rating, setRating] = useState(0);
 
@@ -40,10 +40,10 @@ const TourGuideDetailsCard = () => {
                         Education : {education}</p>
                     <div className="flex gap-4">
                         <p className="mt-2 text-gray-600 dark:text-gray-300">
-                            Email : {contactDetails?.email}
+                            Email : {email}
                         </p>
                         <p className="mt-2 text-gray-600 dark:text-gray-300">
-                            Phone : {contactDetails?.phone}
+                            Phone : {phone}
                         </p>
                     </div>
                     <div className="mt-2 text-gray-600 dark:text-gray-300">

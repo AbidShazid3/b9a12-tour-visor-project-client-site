@@ -9,10 +9,10 @@ const TourGuidesCards = ({guide}) => {
                     <img src={guide.profilePicture} alt="" className="size-40 mx-auto" />
                 </div>
                 <div className="w-2/3 p-4 md:p-4">
-                    <h1 className="text-xl font-bold text-gray-800 dark:text-white">Name: {guide.name}</h1>
+                    <h1 className="text-xl font-bold text-gray-800 dark:text-white">Name: {guide?.name}</h1>
 
-                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Email: {guide?.contactDetails?.email}</p>
-                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Mobile: {guide?.contactDetails?.phone}</p>
+                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Email: {guide?.email}</p>
+                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Mobile: {guide?.phone}</p>
 
                     <div className="mt-3">
                         <Link to={`/tour-guide-details/${guide._id}`}>
