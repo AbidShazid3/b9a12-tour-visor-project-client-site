@@ -6,11 +6,12 @@ import { useForm } from "react-hook-form";
 import registerBG2 from '../../assets/images/bg2.jpg'
 import registerImg from '../../assets/images/register.jpg'
 import toast from "react-hot-toast";
+import { FaArrowsSpin } from "react-icons/fa6";
 
 
 const Register = () => {
     const [showPass, setShowPass] = useState(false);
-    const { user, createUser, updateUserProfile } = useAuth();
+    const { user, createUser, updateUserProfile, loading, setLoading } = useAuth();
     const navigate = useNavigate();
 
     const {
@@ -30,11 +31,11 @@ const Register = () => {
                         reset();
                         toast.success('Login successful!');
                         navigate('/');
-                })
+                    })
             })
             .catch(error => {
-                console.log(error.message);
                 toast.error(error.message);
+                setLoading(false);
             })
     }
 
@@ -104,11 +105,13 @@ const Register = () => {
                             )}
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-outline border-0 text-xl text-white bg-[#D1A054B2]">Register</button>
+                            <button disabled={loading} className="btn btn-outline border-0 text-xl text-white bg-[#D1A054B2]">
+                                {loading ? <FaArrowsSpin className='animate-spin mx-auto' /> : 'Register'}
+                            </button>
                         </div>
                     </form>
                     <div className="text-center">
-                        <Link to="/login" className="text-lg text-[#D1A054B2] font-bold hover:text-green-500">Already registered? Go to log in</Link>
+                        <Link to="/login" className="text-lg text-black font-bold hover:text-green-500">Already registered? Go to log in</Link>
                     </div>
                 </div>
             </div>

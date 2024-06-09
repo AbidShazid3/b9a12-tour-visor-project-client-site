@@ -52,7 +52,7 @@ const UserDataRow = ({ user, refetch }) => {
                 <p className={`${user.status === 'Verified' ? 'text-green-500' : 'text-yellow-500'} whitespace-no-wrap`}>{user.status}</p>) : (
                 <p className='text-red-500 whitespace-no-wrap'>Unavailable</p>)}</td>
             <td>
-                <button onClick={handleAdmin} disabled={user?.status === 'Verified'} className='btn btn-sm btn-accent'>Make Admin</button>
+                <button onClick={handleAdmin} disabled={user?.status  === 'Verified'} className='btn btn-sm btn-accent'>Make Admin</button>
             </td>
             <td>
                 <button onClick={handleTourGuide} disabled={user?.status === 'Verified'} className='btn btn-sm btn-accent'>Make Tour Guide</button>

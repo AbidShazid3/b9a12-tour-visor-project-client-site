@@ -9,7 +9,6 @@ const TouristRequest = () => {
     const axiosSecure = useAxiosSecure();
 
     const handleRequest = async () => {
-        console.log('i want to be a guide');
 
         try {
             const currentUser = {

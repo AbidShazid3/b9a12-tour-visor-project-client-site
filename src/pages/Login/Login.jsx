@@ -5,10 +5,11 @@ import { useState } from 'react';
 import { useForm } from "react-hook-form"
 import useAuth from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
+import { ImSpinner } from 'react-icons/im';
 
 const Login = () => {
     const [showPass, setShowPass] = useState(false);
-    const { user, loginUser, googleLogin } = useAuth();
+    const { user, loginUser, googleLogin, loading, setLoading } = useAuth();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
     console.log(location.state);
@@ -32,6 +33,7 @@ const Login = () => {
             })
             .catch(error => {
                 toast.error(error.message);
+                setLoading(false);
             })
     }
 
@@ -45,6 +47,7 @@ const Login = () => {
             })
             .catch(error => {
                 toast.error(error.message);
+                setLoading(false);
             })
     }
 
@@ -102,8 +105,8 @@ const Login = () => {
                 </div>
 
                 <div className="mt-6">
-                    <button type="submit" className="w-full px-6 py-2.5 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
-                        Sign In
+                    <button disabled={loading} type="submit" className="w-full px-6 py-2.5 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+                    {loading ? <ImSpinner className='animate-spin mx-auto' /> : 'LogIn'}
                     </button>
                 </div>
             </form>
@@ -117,7 +120,7 @@ const Login = () => {
             </div>
 
             <div className="flex items-center mt-6 -mx-2">
-                <button onClick={handleGoogleLogIn} type="button" className="flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:bg-blue-400 focus:outline-none">
+                <button disabled={loading} onClick={handleGoogleLogIn} type="button" className="flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:bg-blue-400 focus:outline-none">
                     <FaGoogle />
                     <span className="hidden mx-2 sm:inline">Sign in with Google</span>
                 </button>

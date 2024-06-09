@@ -65,7 +65,7 @@ const MyBooking = () => {
                                 <td>TK{booking.price}</td>
                                 <td>{booking.status}</td>
                                 <td>
-                                    <button disabled={booking.status === 'In Review'} className="btn btn-xs btn-success">Pay</button>
+                                    <button disabled={booking.status === 'In Review' || booking.status === 'Rejected'} className="btn btn-xs btn-success">Pay</button>
                                 </td>
                                 <td>
                                     <button disabled={booking.status === 'Accepted'} onClick={() => handleDelete(booking._id)} className="btn btn-xs btn-error">Cancel</button>

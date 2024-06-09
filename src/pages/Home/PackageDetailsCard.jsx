@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 
 
 const PackageDetailsCard = () => {
-    const { user } = useAuth();
+    const { user, loading, setLoading  } = useAuth();
     const packageDetails = useLoaderData();
     const { _id, img, tourType, tripTitle, location, price, aboutTour, tourDuration, tourPlan } = packageDetails;
     const [guides] = useGuides();
@@ -48,6 +48,7 @@ const PackageDetailsCard = () => {
             })
             .catch(error => {
                 toast.error(error.message);
+                setLoading(false)
         })
         
     }
@@ -160,7 +161,7 @@ const PackageDetailsCard = () => {
                                 </select>
                             </div>
                             <div className="mt-6 col-span-full">
-                                {user && user?.email ? <button className="btn btn-outline btn-info text-xl w-full">Booking Now</button> : <button disabled className="btn btn-accent text-xl w-full">Booking Now</button>}
+                                {user && user?.email ? <button disabled={loading} className="btn btn-outline btn-info text-xl w-full">Booking Now</button> : <button disabled className="btn btn-accent text-xl w-full">Booking Now</button>}
                             </div>
                         </form>
                     </div>
