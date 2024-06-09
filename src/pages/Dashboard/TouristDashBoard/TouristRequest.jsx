@@ -17,7 +17,7 @@ const TouristRequest = () => {
                 status: 'Requested',
             }
             const { data } = await axiosSecure.put('/user', currentUser)
-            console.log(data);
+
             if (data.modifiedCount > 0) {
                 toast.success('Success, Pease wait for admin confirmation')
             } else {

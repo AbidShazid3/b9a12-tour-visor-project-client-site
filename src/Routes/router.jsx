@@ -26,6 +26,11 @@ import MyAssignedTours from "../pages/Dashboard/GuideDashBoard/MyAssignedTours";
 import TouristProfile from "../pages/Dashboard/TouristDashBoard/TouristProfile";
 import GuideProfile from "../pages/Dashboard/GuideDashBoard/GuideProfile";
 import AdminProfile from "../pages/Dashboard/AdminDashBoard/AdminProfile";
+import DashBoardHome from "../pages/Dashboard/DashBoardHome";
+import PrivetRoute from "./PrivetRoute";
+import TouristRoute from "./TouristRoute";
+import GuideRoute from "./GuideRoute";
+import AdminRoute from "./AdminRoute";
 
 
 export const router = createBrowserRouter([
@@ -87,46 +92,51 @@ export const router = createBrowserRouter([
     { path: '/register', element: <Register></Register> },
     {
         path: '/dashboard',
-        element: <DashBoardLayout></DashBoardLayout>,
+        element: <PrivetRoute><DashBoardLayout></DashBoardLayout></PrivetRoute>,
         children: [
+            
+            {
+                path: '/dashboard',
+                element: <PrivetRoute><DashBoardHome></DashBoardHome></PrivetRoute>
+            },
             // tourist
             {
                 path: 'tourist-profile',
-                element: <TouristProfile></TouristProfile>
+                element: <PrivetRoute><TouristRoute><TouristProfile></TouristProfile></TouristRoute></PrivetRoute>
             },
             {
                 path: 'my-bookings',
-                element: <MyBooking></MyBooking>
+                element: <PrivetRoute><TouristRoute><MyBooking></MyBooking></TouristRoute></PrivetRoute>
             },
             {
                 path: 'my-wishlist',
-                element: <MyWishlist></MyWishlist>
+                element: <PrivetRoute><TouristRoute><MyWishlist></MyWishlist></TouristRoute></PrivetRoute>
             },
             {
                 path: 'tourist-request',
-                element: <TouristRequest></TouristRequest>
+                element: <PrivetRoute><TouristRoute><TouristRequest></TouristRequest></TouristRoute></PrivetRoute>
             },
             // tour guide
             {
                 path: 'guide-profile',
-                element: <GuideProfile></GuideProfile>
+                element: <PrivetRoute><GuideRoute><GuideProfile></GuideProfile></GuideRoute></PrivetRoute>
             },
             {
                 path: 'my-assigned-tours',
-                element: <MyAssignedTours></MyAssignedTours>
+                element: <PrivetRoute><GuideRoute><MyAssignedTours></MyAssignedTours></GuideRoute></PrivetRoute>
             },
             // admin
             {
                 path: 'admin-profile',
-                element: <AdminProfile></AdminProfile>
+                element: <PrivetRoute><AdminRoute><AdminProfile></AdminProfile></AdminRoute></PrivetRoute>
             },
             {
                 path: 'add-package',
-                element: <AddPackage></AddPackage>
+                element: <PrivetRoute><AdminRoute><AddPackage></AddPackage></AdminRoute></PrivetRoute>
             },
             {
                 path: 'manage-users',
-                element: <ManageUsers></ManageUsers>
+                element: <PrivetRoute><AdminRoute><ManageUsers></ManageUsers></AdminRoute></PrivetRoute>
             },
         ]
     }

@@ -6,31 +6,31 @@ const GuideDataRow = ({ guide, refetch }) => {
     const axiosSecure = useAxiosSecure();
 
     const handleReject = (id) => {
-        console.log(id);
         const updateStatus = {
             status: 'Rejected',
         }
         axiosSecure.patch(`/bookings/update/${id}`, updateStatus)
             .then(res => {
-                console.log(res.data)
                 if (res.data.modifiedCount > 0) {
                     refetch();
-                    toast.success('updated')
+                    toast.success('Successfully Rejected')
+                }else {
+                    toast.success('Already Rejected The Booking')
                 }
             })
     }
 
     const handleAccept = (id) => {
-        console.log(id);
         const updateStatus = {
             status: 'Accepted',
         }
         axiosSecure.patch(`/bookings/update/${id}`, updateStatus)
             .then(res => {
-                console.log(res.data)
                 if (res.data.modifiedCount > 0) {
                     refetch();
-                    toast.success('updated')
+                    toast.success('Successfully Accepted')
+                }else {
+                    toast.success('Already Accepted The Booking')
                 }
             })
     }

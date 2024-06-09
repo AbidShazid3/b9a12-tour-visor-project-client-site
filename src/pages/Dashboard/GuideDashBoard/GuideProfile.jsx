@@ -48,8 +48,7 @@ const GuideProfile = () => {
             }
             
         } catch (err) {
-            console.log(err.message);
-            toast.error("Already Submitted");
+            toast.error("Already Submitted The Guide Form");
         }
     }
 
