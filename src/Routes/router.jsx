@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
             {
                 path: '/package-details/:id',
                 element: <PackageDetailsCard></PackageDetailsCard>,
-                loader: ({ params }) => fetch(`http://localhost:5000/packages/${params.id}`)
+                loader: ({ params }) => fetch(`https://tour-visor-server.vercel.app/packages/${params.id}`)
             },
             {
                 path: '/all-packages',
@@ -76,7 +76,7 @@ export const router = createBrowserRouter([
             {
                 path: '/tour-guide-details/:id',
                 element: <TourGuideDetailsCard></TourGuideDetailsCard>,
-                loader: ({ params }) => fetch(`http://localhost:5000/guides/${params.id}`)
+                loader: ({ params }) => fetch(`https://tour-visor-server.vercel.app/guides/${params.id}`)
             },
             {
                 path: '/tour-guides',
@@ -89,7 +89,7 @@ export const router = createBrowserRouter([
             {
                 path: '/story/:id',
                 element: <SingleStoryDetails></SingleStoryDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/stories/${params.id}`)
+                loader: ({ params }) => fetch(`https://tour-visor-server.vercel.app/stories/${params.id}`)
             },
         ]
     },
