@@ -31,6 +31,7 @@ import PrivetRoute from "./PrivetRoute";
 import TouristRoute from "./TouristRoute";
 import GuideRoute from "./GuideRoute";
 import AdminRoute from "./AdminRoute";
+import PackageTourTypes from "../pages/Home/TourTypes/PackageTourTypes";
 
 
 export const router = createBrowserRouter([
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
             {
                 path: '/all-packages',
                 element: <AllPackages></AllPackages>
+            },
+            {
+                path: '/package/:type',
+                element: <PackageTourTypes></PackageTourTypes>
             },
             {
                 path: '/tour-guide-details/:id',
