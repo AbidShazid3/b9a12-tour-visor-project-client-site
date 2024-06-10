@@ -68,8 +68,8 @@ const NavBar = () => {
                                     </div>
                                 </div>
                                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[9999] p-2 shadow bg-base-100 rounded-box w-52">
-                                    <NavLink to='/dashboard' className='px-2 py-2 hover:bg-neutral-100 transition font-semibold cursor-pointer rounded-lg' onClick={handleClick}>Dashboard</NavLink>
-                                    <NavLink className='px-2 py-2 hover:bg-neutral-100 transition font-semibold cursor-pointer rounded-lg' onClick={handleClick}>Offer Announcements</NavLink>
+                                    <NavLink to='/dashboard' className='px-2 py-2 hover:bg-neutral-200 transition font-semibold cursor-pointer rounded-lg' onClick={handleClick}>Dashboard</NavLink>
+                                    <NavLink className='px-2 py-2 hover:bg-neutral-200 transition font-semibold cursor-pointer rounded-lg' onClick={handleClick}>Offer Announcements</NavLink>
                                     <li className="pointer-events-none"><p>{user.displayName}</p></li>
                                     <li className="pointer-events-none py-2"><p>{user.email}</p></li>
                                     <button onClick={handleSignOutUser} className="btn btn-outline btn-sm border-none">Sign Out</button>

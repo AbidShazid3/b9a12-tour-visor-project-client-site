@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+
 const StoryCartDetails = ({ story }) => {
+
     return (
         <Link to={`/story/${story._id}`} className="w-full max-w-md px-8 py-4 bg-slate-100 rounded-lg shadow-lg object-cover overflow-hidden transition-transform duration-300 transform hover:scale-105">
             <div>

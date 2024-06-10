@@ -1,14 +1,14 @@
-
 import { Link } from "react-router-dom";
 import useStories from "../../hooks/useStories";
 import Heading from "../Shared/Heading/Heading";
 import StoryCartDetails from "./StoryCartDetails";
 
 
+
 const TouristStory = () => {
     const [stories] = useStories();
 
-    const shortStories = stories.slice(0, 5);
+    const shortStories = stories.slice(0, 6);
 
     return (
         <div className="mt-20">

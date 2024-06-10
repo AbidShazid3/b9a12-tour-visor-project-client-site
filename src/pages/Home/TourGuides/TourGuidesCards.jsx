@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
+import { motion } from "framer-motion"
 
-const TourGuidesCards = ({guide}) => {
+const TourGuidesCards = ({ guide }) => {
+    
     return (
-        <div>
+        <motion.div whileHover={{ scale: 0.9 }}>
             <div className="flex max-w-xl overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-600">
                 <div>
                     <img src={guide.profilePicture} alt="" className="size-40 mx-auto" />
@@ -21,7 +23,7 @@ const TourGuidesCards = ({guide}) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

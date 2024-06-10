@@ -4,12 +4,15 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { Rating } from 'react-simple-star-rating'
 import { useState } from "react";
+import useAuth from "../../../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const TourGuideDetailsCard = () => {
     const guideDetails = useLoaderData();
     const { name, profilePicture, email, phone, education, skills, workExperience } = guideDetails
     const navigate = useNavigate();
     const [rating, setRating] = useState(0);
+    const { user } = useAuth();
 
     // Catch Rating value
     const handleRating = (rate) => {
@@ -19,7 +22,9 @@ const TourGuideDetailsCard = () => {
     const handleSubmit = e => {
         e.preventDefault();
         const text = e.target.text.value;
-        console.log(text);
+        const star = rating
+        console.log(text, star);
+        toast.success('thanks for your feedback')
 
     }
 
@@ -76,7 +81,7 @@ const TourGuideDetailsCard = () => {
                                         </div>
                                         <textarea className="textarea textarea-bordered h-24" name="text" placeholder="Bio"></textarea>
                                     </label>
-                                    <button className="btn btn-primary mt-5">Submit</button>
+                                    <button disabled={!user} className="btn btn-outline btn-accent mt-5">Submit</button>
                                 </div>
                             </div>
                         </form>

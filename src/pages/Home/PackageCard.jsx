@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion"
 
 const PackageCard = ({ pack }) => {
     const { user } = useAuth();
@@ -50,7 +51,7 @@ const PackageCard = ({ pack }) => {
     }
 
     return (
-        <div className="max-w-xl overflow-hidden bg-slate-200 rounded-lg shadow-lg">
+        <motion.div whileHover={{ scale: 1.05 }} className="max-w-xl overflow-hidden bg-slate-200 rounded-lg shadow-lg">
             <div className="px-4 py-4">
                 <h1 className="text-xl font-bold text-gray-800 uppercase">{pack.tripTitle}</h1>
                 <p className="mt-1 text-sm text-gray-600">Type: {pack.tourType}</p>
@@ -65,7 +66,7 @@ const PackageCard = ({ pack }) => {
                 <h1 className="text-lg font-bold text-white">TK {pack.price}</h1>
                 <button onClick={() => handleAddToCart(pack)} className="btn-xs text-xl text-white hover:text-2xl"><FaRegHeart /></button>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
