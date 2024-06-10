@@ -24,7 +24,6 @@ const ManageUsers = () => {
         e.preventDefault();
         const searchText = e.target.search.value;
         setSearch(searchText);
-        console.log(searchText);
     }
 
     const handleReset = () => {

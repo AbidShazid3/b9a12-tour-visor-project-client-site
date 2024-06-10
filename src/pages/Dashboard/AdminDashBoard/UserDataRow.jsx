@@ -13,7 +13,6 @@ const UserDataRow = ({ user, refetch }) => {
         },
         onSuccess: (data) => {
             refetch();
-            console.log(data);
             toast.success('User role updated successfully!')
         }
     })

@@ -70,7 +70,6 @@ const AddPackage = () => {
             }
 
         } catch (err) {
-            console.log(err);
             setLoading(false);
             toast.error(err.message);
         }

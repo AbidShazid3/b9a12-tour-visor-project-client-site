@@ -17,7 +17,6 @@ const Sidebar = () => {
     const [isActive, setActive] = useState(false);
     const navigate = useNavigate();
     const [role] = useRole();
-    console.log(role);
 
     const handleSignOutUser = () => {
         logOutUser()
@@ -68,13 +67,13 @@ const Sidebar = () => {
                 <div>
                     <div>
                         <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-white mx-auto'>
-                            <Link to='/'>
+                            <Link to='/' className='transition-transform duration-300 transform hover:scale-110'>
                                 <img
                                     // className='hidden md:block'
                                     src={img1}
                                     alt='logo'
-                                    width='50'
-                                    height='50'
+                                    width='70'
+                                    height='70'
                                 />
                             </Link>
                         </div>

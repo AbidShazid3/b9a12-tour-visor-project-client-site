@@ -12,7 +12,6 @@ const Login = () => {
     const { user, loginUser, googleLogin, loading, setLoading } = useAuth();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
-    console.log(location.state);
     const navigate = useNavigate();
 
     const {
